@@ -1,0 +1,39 @@
+*{
+   margin: 0;
+   padding: 0;
+   border: 1px solid black;
+}
+
+html,body{
+   height: 100%;
+}
+
+body{
+   display: grid;
+   grid-template-columns: 100%;
+   grid-template-rows: 5% 90% 5%;
+}
+
+header{
+   background-color:darkblue;
+}
+
+main{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color:deepskyblue
+}
+
+.sketch-container{
+   background-color: white;
+   display: grid;
+   grid-template-columns: repeat(16, 6.25%);
+   grid-template-rows: repeat(16, 6.25%);
+   height: 500px;
+   width: 500px;
+}
+
+footer{
+   background-color:darkblue
+}

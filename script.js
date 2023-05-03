@@ -11,8 +11,11 @@ for(i=1;i<=256;i++){
 sketchContainer.addEventListener('mouseenter',() => {
    let squares = document.querySelectorAll('.sketch-container > div');
    squares.forEach(square => {
-      square.addEventListener('click',() => {
-         square.style.background = 'black';
+      square.addEventListener('mousedown',(e) => {
+         // Click gauche de la souris
+         if(e.button===0){
+            square.style.background = 'black';
+         }
       });
    });
 });

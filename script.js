@@ -1,6 +1,6 @@
-const sketchContainer = document.querySelector('.sketch-container');
+const sketchContainer = document.querySelector('.canvas');
 // Disable drag-and-drop feature on the canvas
-document.querySelector('.sketch-container').ondragstart = function() {
+document.querySelector('.canvas').ondragstart = function() {
    return false;
 };
 
@@ -12,9 +12,9 @@ for(i=1;i<=256;i++){
 }
 
 /* Click on cell to color it in black */
-// Mouse pointer enter the grid
+// Mouse pointer hover the canvas
 sketchContainer.addEventListener('mouseenter',() => {
-   let squares = document.querySelectorAll('.sketch-container > div');
+   let squares = document.querySelectorAll('.canvas > div');
    squares.forEach(square => {
       square.addEventListener('mousemove',(e) => {
          // If no mouse click or press

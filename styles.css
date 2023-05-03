@@ -25,7 +25,7 @@ main{
    background-color:deepskyblue
 }
 
-.sketch-container{
+.canvas{
    background-color: white;
    display: grid;
    grid-template-columns: repeat(16, 6.25%);

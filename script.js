@@ -13,16 +13,22 @@ for(i=1;i<=256;i++){
 
 /* Click on cell to color it in black */
 // Mouse pointer hover the canvas
-sketchContainer.addEventListener('mouseenter',() => {
-   let squares = document.querySelectorAll('.canvas > div');
-   squares.forEach(square => {
-      square.addEventListener('mousemove',(e) => {
-         // If no mouse click or press
-         if(e.buttons === 0){ return }
-         // On left mouse click
-         if(e.button === 0){
-            square.style.background = 'black';
-         }
-      });
+let squares = document.querySelectorAll('.canvas > div');
+squares.forEach(square => {
+   square.addEventListener('mousedown',(e) => {
+      // If no mouse click or press
+      if(e.buttons === 0){ return }
+      // On left mouse click
+      if(e.button === 0){
+         square.style.background = 'black';
+      }
+   });
+   square.addEventListener('mousemove',(e) => {
+      // If no mouse click or press
+      if(e.buttons === 0){ return }
+      // On left mouse click
+      if(e.button === 0){
+         square.style.background = 'black';
+      }
    });
 });

@@ -1,6 +1,6 @@
-# Etchy-a-Sketchy
+# Project Sketch
 
-Etchy-a-Sketchy is a browser version of Etch-a-sketch.
+Project Sketch is a browser version of Etch-a-sketch.
 This project is part of the Odin-Project curriculum.
 
 ## How to use

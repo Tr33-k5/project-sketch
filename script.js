@@ -29,6 +29,18 @@ squares.forEach(square => {
    });
 });
 
+/* Control canvas resolution */
+let inputResolution = document.querySelector('#res');
+inputResolution.addEventListener('change',() => {
+   "inputResolution.style.background = 'black';"
+   /*
+   NOT WORKING :^)
+   let inputResolutionValue = inputResolution.value;
+   removeCanvas();
+   createCanvas(inputResolutionValue);
+   */
+});
+
 // Create canvas with display grid css styles
 function createCanvas(res){
    const sheet = new CSSStyleSheet();

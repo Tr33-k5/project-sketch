@@ -8,45 +8,17 @@ document.querySelector('.canvas').ondragstart = function() {
 createCanvas(16);
 
 /* Click on cell to color it in black */
-// Mouse pointer hover the canvas
-let squares = document.querySelectorAll('.canvas > div');
-squares.forEach(square => {
-      square.addEventListener('mousedown',(e) => {
-      // If no mouse click or press
-      if(e.buttons === 0){ return }
-      // On left mouse click
-      if(e.button === 0){
-         square.style.background = 'black';
-      }
-   });
-   square.addEventListener('mousemove',(e) => {
-      // If no mouse click or press
-      if(e.buttons === 0){ return }
-      // On left mouse click
-      if(e.button === 0){
-         square.style.background = 'black';
-      }
-   });
-});
+draw();
 
-/* Control canvas resolution */
-let inputResolution = document.querySelector('#res');
-inputResolution.addEventListener('change',() => {
-   "inputResolution.style.background = 'black';"
-   /*
-   NOT WORKING :^)
-   let inputResolutionValue = inputResolution.value;
-   removeCanvas();
-   createCanvas(inputResolutionValue);
-   */
-});
+/* Change canvas resolution */
+changeResolution();
 
 // Create canvas with display grid css styles
 function createCanvas(res){
    const sheet = new CSSStyleSheet();
    sheet.replaceSync(".canvas {"+
-      "grid-template-columns: repeat("+res+", 6.25%);"+
-      "grid-template-rows: repeat("+res+", 6.25%);"+
+      "grid-template-columns: repeat("+res+", auto);"+
+      "grid-template-rows: repeat("+res+", auto);"+
    "}");
    document.adoptedStyleSheets = [sheet];
    for(i=1;i<=(res*res);i++){
@@ -58,8 +30,43 @@ function createCanvas(res){
 
 // Erase canvas
 function removeCanvas(){
-   let divs = document.querySelector('.canvas > div');
+   let divs = document.querySelectorAll('.canvas > div');
    divs.forEach(div => {
       div.remove();
+   });
+}
+
+// Feature: Change the canvas resolution
+function draw(){
+   // Mouse pointer hover the canvas
+   let squares = document.querySelectorAll('.canvas > div');
+   squares.forEach(square => {
+         square.addEventListener('mousedown',(e) => {
+         // If no mouse click or press
+         if(e.buttons === 0){ return }
+         // On left mouse click
+         if(e.button === 0){
+            square.style.background = 'black';
+         }
+      });
+      square.addEventListener('mousemove',(e) => {
+         // If no mouse click or press
+         if(e.buttons === 0){ return }
+         // On left mouse click
+         if(e.button === 0){
+            square.style.background = 'black';
+         }
+      });
+   });
+}
+
+// Feature: Control the canvas resolution
+function changeResolution(){
+   let inputResolution = document.querySelector('#res');
+   inputResolution.addEventListener('change',() => {
+      let inputResolutionValue = inputResolution.value;
+      removeCanvas();
+      createCanvas(inputResolutionValue);
+      draw();
    });
 }

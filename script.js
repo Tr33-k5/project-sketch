@@ -4,7 +4,7 @@ const inputResolution = document.querySelector('#res');
 /* Disable drag-and-drop feature on the canvas */
 document.querySelector('.canvas').ondragstart = function() {
    return false;
-};
+}
 
 /* Create a 16x16 canvas */
 createNewCanvas(16);
@@ -12,20 +12,21 @@ createNewCanvas(16);
 /* Check selected tool*/
 checkSelectedTool();
 
-/* Change canvas resolution */
-changeResolution();
+/* Change canvas's resolution if changed */
+isResolutionChanged();
 
-clearButtonIsClicked()
+/* Clear Canvas if clicked */
+isClearButtonClicked()
 
 // Create a canvas using 'display:grid' property
-function createNewCanvas(res){
+function createNewCanvas(resolution){
    const sheet = new CSSStyleSheet();
    sheet.replaceSync(".canvas {"+
-      "grid-template-columns: repeat("+res+", auto);"+
-      "grid-template-rows: repeat("+res+", auto);"+
+      "grid-template-columns: repeat("+resolution+", auto);"+
+      "grid-template-rows: repeat("+resolution+", auto);"+
    "}");
    document.adoptedStyleSheets = [sheet];
-   for(i=1;i<=(res*res);i++){
+   for(i=1;i<=(resolution*resolution);i++){
       let div = document.createElement('div');
       div.setAttribute('id',''+i+'');
       canvas.appendChild(div);
@@ -40,8 +41,17 @@ function removeCanvas(){
    });
 }
 
-// Check selected tool :
+// Remove old canvas, create new canvas, check what tool is selected
+function resetCanvas(){
+   let resolution = inputResolution.value;
+   removeCanvas();
+   createNewCanvas(resolution);
+   checkSelectedTool();
+}
+
+// Feature: Check what tool is selected :
 // pencil => color a square
+// eraser => erase square color
 function checkSelectedTool(){
    let radioButtons = document.querySelectorAll('input[name=tools]');
    radioButtons.forEach(radioButton => {
@@ -67,12 +77,9 @@ function checkSelectedTool(){
 }
 
 // Feature: Control the canvas resolution
-function changeResolution(){
+function isResolutionChanged(){
    inputResolution.addEventListener('change',() => {
-      let inputResolutionValue = inputResolution.value;
-      removeCanvas();
-      createNewCanvas(inputResolutionValue);
-      checkSelectedTool();
+      resetCanvas();
    });
 }
 
@@ -123,12 +130,11 @@ function eraserIsSelected(){
       });
    });
 }
-function clearButtonIsClicked(){
+
+// Feature: Click on clear button to clear the canvas
+function isClearButtonClicked(){
    let clearButton = document.getElementById('clear');
    clearButton.addEventListener('click',() => {
-      let inputResolutionValue = inputResolution.value;
-      removeCanvas();
-      createNewCanvas(inputResolutionValue);
-      checkSelectedTool();
+      resetCanvas();
    });
 }

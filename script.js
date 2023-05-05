@@ -1,20 +1,21 @@
 let canvas = document.querySelector('.canvas');
-// Disable drag-and-drop feature on the canvas
+
+/* Disable drag-and-drop feature on the canvas */
 document.querySelector('.canvas').ondragstart = function() {
    return false;
 };
 
 /* Create a 16x16 canvas */
-createCanvas(16);
+createNewCanvas(16);
 
-/* Click on cell to color it in black */
-draw();
+/* Check selected tool*/
+checkSelectedTool();
 
 /* Change canvas resolution */
 changeResolution();
 
-// Create canvas with display grid css styles
-function createCanvas(res){
+// Create a canvas using 'display:grid' property
+function createNewCanvas(res){
    const sheet = new CSSStyleSheet();
    sheet.replaceSync(".canvas {"+
       "grid-template-columns: repeat("+res+", auto);"+
@@ -36,8 +37,39 @@ function removeCanvas(){
    });
 }
 
-// Feature: Change the canvas resolution
-function draw(){
+// Check selected tool :
+// pencil => color a square
+function checkSelectedTool(){
+   let radioButtons = document.querySelectorAll('input[name=tools]');
+   radioButtons.forEach(radioButton => {
+      let toolSelected = radioButton.value;
+      if(radioButton.checked){
+         if(toolSelected === 'pencil'){
+            pencilIsSelected();
+         }
+      }
+      radioButton.addEventListener('change',() => {
+         toolSelected = radioButton.value;
+         if(toolSelected === 'pencil'){
+            pencilIsSelected();
+         }
+      });
+   });
+}
+
+// Feature: Control the canvas resolution
+function changeResolution(){
+   let inputResolution = document.querySelector('#res');
+   inputResolution.addEventListener('change',() => {
+      let inputResolutionValue = inputResolution.value;
+      removeCanvas();
+      createCanvas(inputResolutionValue);
+      checkSelectedTool();
+   });
+}
+
+// Feature: Click on cell to color it in black
+function pencilIsSelected(){
    // Mouse pointer hover the canvas
    let squares = document.querySelectorAll('.canvas > div');
    squares.forEach(square => {
@@ -57,16 +89,5 @@ function draw(){
             square.style.background = 'black';
          }
       });
-   });
-}
-
-// Feature: Control the canvas resolution
-function changeResolution(){
-   let inputResolution = document.querySelector('#res');
-   inputResolution.addEventListener('change',() => {
-      let inputResolutionValue = inputResolution.value;
-      removeCanvas();
-      createCanvas(inputResolutionValue);
-      draw();
    });
 }

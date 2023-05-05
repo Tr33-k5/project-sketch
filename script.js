@@ -47,11 +47,17 @@ function checkSelectedTool(){
          if(toolSelected === 'pencil'){
             pencilIsSelected();
          }
+         if(toolSelected === 'eraser'){
+            eraserIsSelected();
+         }
       }
       radioButton.addEventListener('change',() => {
          toolSelected = radioButton.value;
          if(toolSelected === 'pencil'){
             pencilIsSelected();
+         }
+         if(toolSelected === 'eraser'){
+            eraserIsSelected();
          }
       });
    });
@@ -87,6 +93,30 @@ function pencilIsSelected(){
          // On left mouse click
          if(e.button === 0){
             square.style.background = 'black';
+         }
+      });
+   });
+}
+
+// Feature: Click on cell to erase it
+function eraserIsSelected(){
+   // Mouse pointer hover the canvas
+   let squares = document.querySelectorAll('.canvas > div');
+   squares.forEach(square => {
+         square.addEventListener('mousedown',(e) => {
+         // If no mouse click or press
+         if(e.buttons === 0){ return }
+         // On left mouse click
+         if(e.button === 0){
+            square.style.removeProperty('background-color');
+         }
+      });
+      square.addEventListener('mousemove',(e) => {
+         // If no mouse click or press
+         if(e.buttons === 0){ return }
+         // On left mouse click
+         if(e.button === 0){
+            square.style.removeProperty('background-color');
          }
       });
    });

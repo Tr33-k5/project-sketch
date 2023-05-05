@@ -25,6 +25,19 @@ main{
    background-color:deepskyblue
 }
 
+.section-tools{
+   display: flex;
+}
+
+.tools-section2{
+   display: flex;
+}
+
+#color-pick{
+   height: 20px;
+   width: 20px;
+}
+
 .canvas{
    background-color: white;
    display: grid;

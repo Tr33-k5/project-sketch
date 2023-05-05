@@ -52,6 +52,7 @@ function resetCanvas(){
 // Feature: Check what tool is selected :
 // pencil => color a square
 // eraser => erase square color
+// tastetherainbow => color a square in a random color
 function checkSelectedTool(){
    let radioButtons = document.querySelectorAll('input[name=tools]');
    radioButtons.forEach(radioButton => {
@@ -63,6 +64,9 @@ function checkSelectedTool(){
          if(toolSelected === 'eraser'){
             eraserIsSelected();
          }
+         if(toolSelected === 'rainbow'){
+            rainbowIsSelected();
+         }
       }
       radioButton.addEventListener('change',() => {
          toolSelected = radioButton.value;
@@ -71,6 +75,9 @@ function checkSelectedTool(){
          }
          if(toolSelected === 'eraser'){
             eraserIsSelected();
+         }
+         if(toolSelected === 'rainbow'){
+            rainbowIsSelected();
          }
       });
    });
@@ -83,7 +90,7 @@ function isResolutionChanged(){
    });
 }
 
-// Feature: Click on cell to color it in black
+// Feature: Click on cell to color it black
 function pencilIsSelected(){
    // Mouse pointer hover the canvas
    let squares = document.querySelectorAll('.canvas > div');
@@ -126,6 +133,41 @@ function eraserIsSelected(){
          // On left mouse click
          if(e.button === 0){
             square.style.removeProperty('background-color');
+         }
+      });
+   });
+}
+
+// Feature: Click on cell to color it with a random color
+function rainbowIsSelected(){
+   let brightness = 100;
+   // Mouse pointer hover the canvas
+   let squares = document.querySelectorAll('.canvas > div');
+   squares.forEach(square => {
+         square.addEventListener('mousedown',(e) => {
+         // If no mouse click or press
+         if(e.buttons === 0){ return }
+         // On left mouse click
+         if(e.button === 0){
+            let r,g,b;
+            r = Math.floor(Math.random() * 255);
+            g = Math.floor(Math.random() * 255);
+            b = Math.floor(Math.random() * 255);
+            square.style.background = 'rgb('+r+','+g+','+b+')';
+            square.style.filter = 'brightness('+brightness+'%)';
+         }
+      });
+      square.addEventListener('mousemove',(e) => {
+         // If no mouse click or press
+         if(e.buttons === 0){ return }
+         // On left mouse click
+         if(e.button === 0){
+            let r,g,b;
+            r = Math.floor(Math.random() * 255);
+            g = Math.floor(Math.random() * 255);
+            b = Math.floor(Math.random() * 255);
+            square.style.background = 'rgb('+r+','+g+','+b+')';
+            square.style.filter = 'brightness('+brightness+'%)';
          }
       });
    });

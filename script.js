@@ -1,4 +1,5 @@
-let canvas = document.querySelector('.canvas');
+const canvas = document.querySelector('.canvas');
+const inputResolution = document.querySelector('#res');
 
 /* Disable drag-and-drop feature on the canvas */
 document.querySelector('.canvas').ondragstart = function() {
@@ -13,6 +14,8 @@ checkSelectedTool();
 
 /* Change canvas resolution */
 changeResolution();
+
+clearButtonIsClicked()
 
 // Create a canvas using 'display:grid' property
 function createNewCanvas(res){
@@ -65,7 +68,6 @@ function checkSelectedTool(){
 
 // Feature: Control the canvas resolution
 function changeResolution(){
-   let inputResolution = document.querySelector('#res');
    inputResolution.addEventListener('change',() => {
       let inputResolutionValue = inputResolution.value;
       removeCanvas();
@@ -119,5 +121,14 @@ function eraserIsSelected(){
             square.style.removeProperty('background-color');
          }
       });
+   });
+}
+function clearButtonIsClicked(){
+   let clearButton = document.getElementById('clear');
+   clearButton.addEventListener('click',() => {
+      let inputResolutionValue = inputResolution.value;
+      removeCanvas();
+      createNewCanvas(inputResolutionValue);
+      checkSelectedTool();
    });
 }

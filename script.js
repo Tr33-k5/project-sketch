@@ -69,7 +69,7 @@ function changeResolution(){
    inputResolution.addEventListener('change',() => {
       let inputResolutionValue = inputResolution.value;
       removeCanvas();
-      createCanvas(inputResolutionValue);
+      createNewCanvas(inputResolutionValue);
       checkSelectedTool();
    });
 }

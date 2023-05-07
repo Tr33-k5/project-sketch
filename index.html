@@ -9,30 +9,40 @@
    <title>Project Sketch</title>
 </head>
 <body>
-   <header></header>
+   <header>
+      <h1 class="title">Etch-a-Sketch</h1>
+   </header>
    <main>
       <div class="app">
          <section class="section-settings">
             <div class="section-tools">
-               <div class="tools-section1">
-                  <label>Pencil</label>
-                  <input type="radio" name="tools" id="tool-pencil" value="pencil" checked>
-                  <label>Eraser</label>
-                  <input type="radio" name="tools" id="tool-eraser" value="eraser">
-                  <label>Taste the Rainbow</label>
-                  <input type="radio" name="tools" id="tool-rainbow" value="rainbow">
-               </div>
-               <div class="tools-section2">
-                  <label>Color</label>
-                  <input type="button" id="color-pick">
+               <div class="tools-section">
+                  <div class="pencil-container">
+                     <label>Pencil</label>
+                     <input type="radio" name="tools" id="tool-pencil" value="pencil" checked>
+
+                     <label>Color</label>
+                     <input type="button" id="color-pick">
+                  </div>
+                  <div class="eraser-container">
+                     <label>Eraser</label>
+                     <input type="radio" name="tools" id="tool-eraser" value="eraser">
+                  </div>
+                  <div class="rainbow-container">
+                     <label>Taste the Rainbow</label>
+                     <input type="radio" name="tools" id="tool-rainbow" value="rainbow">
+                  </div>
                </div>
             </div>
             <div class="section-canvas-setting">
-               <label>Resolution</label>
-               <input id="res" type="number" min="16" max="100" value="16">
-            </div>
-            <div>
-               <button id="clear">CLEAR</button>
+               <div class="res-container">
+                  <label>Resolution</label>
+                  <input id="res" type="number" min="16" max="100" value="16">
+               </div>
+
+               <div class="btnclear-container">
+                  <button id="clear">CLEAR</button>
+               </div>
             </div>
          </section>
          <section class="section-drawing">
@@ -40,6 +50,8 @@
          </section>
       </div>
    </main>
-   <footer></footer>
+   <footer>
+      <h1 class="copyright">@Tr33-k5</h1>
+   </footer>
 </body>
 </html>

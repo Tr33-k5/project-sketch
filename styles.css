@@ -1,43 +1,32 @@
-*{
+* {
    margin: 0;
    padding: 0;
 }
 
-html,body{
+html,
+body {
    height: 100%;
 }
 
-body{
+body {
    display: grid;
    grid-template-columns: 100%;
-   grid-template-rows: 5% 90% 5%;
+   grid-template-rows: 95% 5%;
 }
 
-header{
-   background-color:rgb(0, 0, 0);
+main {
    display: flex;
    justify-content: center;
    align-items: center;
+   background-color: beige;
 }
 
-.title{
-   font-size: 23px;
-   color: beige;
-}
-
-main{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color:beige;
-}
-
-.app{
+.app {
    display: flex;
    justify-content: space-between;
 }
 
-.section-settings{
+.section-settings {
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
@@ -49,79 +38,84 @@ main{
    font-style: italic;
 }
 
-.tools-section{
+.tools-section {
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
    height: 300px;
    width: 97%;
-   padding-left:3px;
+   padding-left: 3px;
    border-radius: 2px;
    border: 1px solid rgb(100, 100, 100);
    background-color: rgb(201, 201, 201);
 }
-.pencil-container{
+
+.pencil-container {
    display: flex;
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
 }
 
-#color-pick{
+#color-pick {
    height: 20px;
    width: 20px;
-   margin-right: 2px; ;
+   margin-right: 2px;
+   ;
 }
 
-.eraser-container{
+.eraser-container {
    display: flex;
    flex-direction: row;
    justify-content: flex-start;
 }
 
-.eraser-container > label{
+.eraser-container>label {
    margin-right: 7px;
 }
 
-.section-canvas-setting{
+.section-canvas-setting {
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
    height: 25%;
    width: 97%;
-   padding-left:3px;
-   border: 1px solid rgb(100, 100, 100);;
+   padding-left: 3px;
+   border: 1px solid rgb(100, 100, 100);
+   ;
    background-color: rgb(201, 201, 201);
 }
 
-#res{
-   width:40px
+#res {
+   width: 40px
 }
 
-.btnclear-container{
+.btnclear-container {
    display: flex;
-   justify-content: center;;
+   justify-content: center;
+   ;
 }
 
-#clear{
+#clear {
    border-radius: 5px;
-   padding: 2%;;
+   padding: 2%;
+   ;
    background-color: rgb(185, 185, 185);
    font-size: 18px;
    font-weight: bold;
 }
 
-#clear:hover{
+#clear:hover {
    background-color: rgb(201, 201, 201);
    filter: brightness(110%);
 }
 
-#clear:active{
+#clear:active {
    background-color: rgb(201, 201, 201);
    filter: brightness(90%);
 }
 
-.canvas{
+.canvas {
    display: grid;
    height: 500px;
    width: 500px;
@@ -129,14 +123,14 @@ main{
    background-color: white;
 }
 
-footer{
+footer {
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color:rgb(0, 0, 0);
+   background-color: rgb(0, 0, 0);
 }
 
-footer > h1{
+footer>h1 {
    font-size: 15px;
    color: white;
 }
